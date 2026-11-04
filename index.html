@@ -1,12 +1,416 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0; url=roham_profile.html">
-  <title>در حال انتقال به پروفایل…</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دکتر | رهام ایرانمنش</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap" rel="stylesheet">
+<style>
+  @property --a {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+
+  body {
+    display: grid;
+    place-items: center;
+    padding: 34px 16px;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    color: #eae6f5;
+    background:
+      radial-gradient(circle at 18% 8%, rgba(212, 175, 55, .20), transparent 45%),
+      radial-gradient(circle at 82% 92%, rgba(0, 160, 255, .16), transparent 45%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='1' opacity='0.22'%3E%3Cpath d='M45 6 L54 22 L72 22 L63 39 L72 56 L54 56 L45 72 L36 56 L18 56 L27 39 L18 22 L36 22 Z'/%3E%3Ccircle cx='45' cy='39' r='9'/%3E%3C/g%3E%3C/svg%3E"),
+      linear-gradient(160deg, #07070c 0%, #0d0b16 45%, #08080f 100%);
+    background-attachment: fixed;
+    background-size: auto, auto, 90px 90px, auto;
+  }
+
+  .frame {
+    position: relative;
+    width: min(580px, 100%);
+    padding: 3px;
+    border-radius: 26px;
+    background: conic-gradient(from var(--a),
+      #ff004c, #ff8a00, #ffee00, #33ff00,
+      #00e5ff, #4d4dff, #c400ff, #ff004c);
+    animation: spin 5s linear infinite;
+    box-shadow:
+      0 0 26px rgba(0, 229, 255, .28),
+      0 0 60px rgba(196, 0, 255, .20),
+      0 0 110px rgba(255, 0, 76, .14);
+  }
+  @keyframes spin { to { --a: 360deg; } }
+
+  .card {
+    position: relative;
+    border-radius: 23px;
+    padding: 28px 24px 22px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% -10%, rgba(212, 175, 55, .14), transparent 60%),
+      linear-gradient(180deg, #0e0d17 0%, #0a0912 55%, #0c0b14 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Cg fill='none' stroke='%23d4af37' stroke-width='.8' opacity='0.5'%3E%3Cpath d='M35 4 L44 18 L60 18 L51 32 L60 46 L44 46 L35 60 L26 46 L10 46 L19 32 L10 18 L26 18 Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 70px 70px;
+    opacity: .10;
+    pointer-events: none;
+  }
+  .content { position: relative; z-index: 1; }
+
+  .badge-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 13px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    color: #ffe9a8;
+    background: rgba(212, 175, 55, .10);
+    border: 1px solid rgba(212, 175, 55, .45);
+    box-shadow: 0 0 16px rgba(212, 175, 55, .18);
+  }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #33ff88;
+    box-shadow: 0 0 8px #33ff88;
+    animation: blink 1.4s ease-in-out infinite;
+  }
+  @keyframes blink { 50% { opacity: .25; } }
+
+  .name {
+    margin-top: 14px;
+    font-size: clamp(26px, 6vw, 34px);
+    font-weight: 900;
+    line-height: 1.35;
+    background: linear-gradient(90deg, #ffffff, #ffd76a, #ff5ea8, #5ee7ff, #ffffff);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 7s linear infinite;
+  }
+  @keyframes shine { to { background-position: 220% center; } }
+
+  .sub {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #9d97b5;
+    font-weight: 500;
+  }
+  .sub b { color: #7fd4ff; }
+
+  .divider {
+    height: 1px;
+    margin: 20px 0 18px;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,.55), rgba(0,229,255,.45), transparent);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 11px;
+  }
+  @media (max-width: 430px) { .grid { grid-template-columns: 1fr; } }
+
+  .item {
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .035);
+    border: 1px solid rgba(255, 255, 255, .08);
+    transition: .25s ease;
+  }
+  .item:hover {
+    background: rgba(255, 255, 255, .07);
+    border-color: rgba(0, 229, 255, .5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 229, 255, .13);
+  }
+  .item .k {
+    font-size: 11.5px;
+    color: #8f8aa6;
+    margin-bottom: 4px;
+  }
+  .item .v {
+    font-size: 15px;
+    font-weight: 700;
+    color: #f2eefc;
+  }
+
+  .section-title {
+    margin: 22px 0 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #d4af37;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(212,175,55,.5), transparent);
+  }
+  .section-title.cyber { color: #5ee7ff; }
+  .section-title.cyber::after {
+    background: linear-gradient(90deg, rgba(94,231,255,.55), transparent);
+  }
+  .section-title.ident { color: #ff7ad9; }
+  .section-title.ident::after {
+    background: linear-gradient(90deg, rgba(255,122,217,.55), transparent);
+  }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .chip {
+    padding: 7px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    border-radius: 999px;
+    color: #cfe9ff;
+    background: rgba(0, 229, 255, .07);
+    border: 1px solid rgba(0, 229, 255, .30);
+    transition: .25s ease;
+    cursor: default;
+  }
+  .chip:hover {
+    color: #06121a;
+    background: #5ee7ff;
+    border-color: #5ee7ff;
+    box-shadow: 0 0 18px rgba(94, 231, 255, .55);
+    transform: translateY(-2px);
+  }
+  .chip.gold {
+    color: #ffe9a8;
+    background: rgba(212, 175, 55, .08);
+    border-color: rgba(212, 175, 55, .40);
+  }
+  .chip.gold:hover {
+    color: #1a1405;
+    background: #ffd76a;
+    border-color: #ffd76a;
+    box-shadow: 0 0 18px rgba(255, 215, 106, .55);
+  }
+
+  .chip.creative {
+    position: relative;
+    padding: 7px 16px;
+    color: #e9d9ff;
+    background: linear-gradient(120deg, rgba(196,0,255,.18), rgba(0,229,255,.14));
+    border: 1px solid rgba(196, 0, 255, .50);
+    box-shadow: 0 0 14px rgba(196, 0, 255, .18);
+    font-weight: 700;
+  }
+  .chip.creative::before {
+    content: '✦';
+    margin-left: 6px;
+    color: #ffd76a;
+    font-size: 11px;
+  }
+  .chip.creative:hover {
+    color: #100a1c;
+    background: linear-gradient(120deg, #d47bff, #5ee7ff);
+    border-color: #d47bff;
+    box-shadow: 0 0 22px rgba(196, 0, 255, .60);
+    transform: translateY(-2px);
+  }
+
+  .chip.ident {
+    color: #ffd6f2;
+    background: rgba(255, 122, 217, .08);
+    border: 1px solid rgba(255, 122, 217, .35);
+  }
+  .chip.ident:hover {
+    color: #1c0a16;
+    background: #ff7ad9;
+    border-color: #ff7ad9;
+    box-shadow: 0 0 18px rgba(255, 122, 217, .55);
+    transform: translateY(-2px);
+  }
+
+  .nerox {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 13px 16px;
+    border-radius: 15px;
+    background: linear-gradient(120deg, rgba(196,0,255,.13), rgba(0,229,255,.10));
+    border: 1px solid rgba(196, 0, 255, .35);
+    box-shadow: 0 0 22px rgba(196, 0, 255, .12) inset;
+  }
+  .nerox .label { font-size: 11.5px; color: #a79fc4; }
+  .nerox .id {
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #c400ff, #5ee7ff, #c400ff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 4s linear infinite;
+  }
+
+  .flag-wrap {
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(255, 255, 255, .12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .flag {
+    width: 160px;
+    border-radius: 5px;
+    border: 1px solid rgba(212, 175, 55, .55);
+    box-shadow:
+      0 0 20px rgba(212, 175, 55, .25),
+      0 6px 18px rgba(0, 0, 0, .55);
+    transition: .3s ease;
+  }
+  .flag:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 34px rgba(212, 175, 55, .45), 0 8px 22px rgba(0, 0, 0, .6);
+  }
+  .flag-cap {
+    font-size: 11.5px;
+    color: #8f8aa6;
+    letter-spacing: .4px;
+  }
+</style>
 </head>
 <body>
-  <p>در حال انتقال به <a href="roham_profile.html">صفحه پروفایل</a>…</p>
+
+  <div class="frame">
+    <div class="card">
+      <div class="content">
+
+        <span class="badge-top"><span class="dot"></span> پروفایل فعال</span>
+
+        <h1 class="name">رهام ایرانمنش</h1>
+        <p class="sub">معروف به <b>«دکتر»</b> &nbsp;•&nbsp; هویت اصلی <b>neRox</b></p>
+
+        <div class="divider"></div>
+
+        <div class="grid">
+          <div class="item">
+            <div class="k">سن</div>
+            <div class="v">۱۷ سال</div>
+          </div>
+          <div class="item">
+            <div class="k">پایه تحصیلی</div>
+            <div class="v">یازدهم</div>
+          </div>
+          <div class="item">
+            <div class="k">محل زندگی</div>
+            <div class="v">زعفرانیه، تهران</div>
+          </div>
+          <div class="item">
+            <div class="k">حوزه فعالیت</div>
+            <div class="v">سایبری</div>
+          </div>
+        </div>
+
+        <div class="section-title">تحصیلات و مهارت‌ها</div>
+        <div class="chips">
+          <span class="chip">جمع‌آوری اطلاعات (OSINT)</span>
+          <span class="chip">پایتون پیشرفته</span>
+          <span class="chip">پایتون مقدماتی</span>
+          <span class="chip gold">امنیت سایبری</span>
+          <span class="chip gold">و ...</span>
+        </div>
+
+        <div class="section-title cyber">تک‌های خلاقانه</div>
+        <div class="chips">
+          <span class="chip creative">CyberGuard</span>
+          <span class="chip creative">و ...</span>
+        </div>
+
+        <div class="section-title ident">هویت‌ها</div>
+        <div class="chips">
+          <span class="chip ident">دکتر تک‌چشم</span>
+          <span class="chip ident">دکتر اکتیویتی</span>
+          <span class="chip ident">و ...</span>
+        </div>
+
+        <div class="nerox">
+          <div>
+            <div class="label">هویت شناخته‌شده در سروش پلاس</div>
+            <div class="id">neRox</div>
+          </div>
+          <span class="chip">✔ تأیید شده</span>
+        </div>
+
+        <div class="flag-wrap">
+          <svg class="flag" viewBox="0 0 150 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="پرچم ایران با نشان شیر و خورشید سرخ">
+            <rect width="150" height="90" fill="#ffffff"/>
+            <rect width="150" height="30" fill="#239f40"/>
+            <rect y="60" width="150" height="30" fill="#da0000"/>
+
+            <g transform="translate(75,45) scale(0.5) translate(-47,-41.5)">
+              <g fill="#da0000" transform="translate(50,52)">
+                <rect x="-2.5" y="-30" width="5" height="9" rx="2.5"/>
+                <rect x="-2.5" y="-30" width="5" height="9" rx="2.5" transform="rotate(30)"/>
+                <rect x="-2.5" y="-30" width="5" height="9" rx="2.5" transform="rotate(60)"/>
+                <rect x="-2.5" y="-30" width="5" height="9" rx="2.5" transform="rotate(90)"/>
+                <rect x="-2.5" y="-30" width="5" height="9" rx="2.5" transform="rotate(120)"/>
+                <rect x="-2.5" y="-30" width="5" height="9" rx="2.5" transform="rotate(150)"/>
+                <rect x="-2.5" y="-30" width="5" height="9" rx="2.5" transform="rotate(180)"/>
+                <rect x="-2.5" y="-30" width="5" height="9" rx="2.5" transform="rotate(210)"/>
+                <rect x="-2.5" y="-30" width="5" height="9" rx="2.5" transform="rotate(240)"/>
+                <rect x="-2.5" y="-30" width="5" height="9" rx="2.5" transform="rotate(270)"/>
+                <rect x="-2.5" y="-30" width="5" height="9" rx="2.5" transform="rotate(300)"/>
+                <rect x="-2.5" y="-30" width="5" height="9" rx="2.5" transform="rotate(330)"/>
+              </g>
+
+              <circle cx="50" cy="52" r="21" fill="#da0000"/>
+
+              <path d="M73 50 C 82 48 86 36 80 28 C 77 24 72 26 73 31"
+                    fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>
+              <path d="M73 50 C 82 48 86 36 80 28 C 77 24 72 26 73 31"
+                    fill="none" stroke="#da0000" stroke-width="3.6" stroke-linecap="round"/>
+
+              <path d="M33 57 L 30 55 L 16 16 L 19 13 Z"
+                    fill="#da0000" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/>
+
+              <path d="M16 44 C 14 50 19 55 27 56 L 33 57 L 31 70 L 36 70 L 38 58
+                       L 43 59 L 43 70 L 48 70 L 50 59 L 56 59 L 56 70 L 61 70
+                       L 63 58 L 69 58 L 71 70 L 76 70 L 74 56
+                       C 80 52 80 44 74 40 L 58 36 L 43 34
+                       C 39 32 36 27 30 29 L 27 25 L 23 32
+                       C 19 33 16 38 16 44 Z"
+                    fill="#da0000" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/>
+
+              <path d="M25 58 L 38 54" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+              <path d="M25 58 L 38 54" fill="none" stroke="#da0000" stroke-width="3" stroke-linecap="round"/>
+              <path d="M31 59 L 35 66" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+              <path d="M31 59 L 35 66" fill="none" stroke="#da0000" stroke-width="3" stroke-linecap="round"/>
+            </g>
+          </svg>
+          <span class="flag-cap">ایران — شیر و خورشید سرخ</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
